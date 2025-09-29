@@ -5,7 +5,6 @@ if (!isset($_SESSION['users'])) {
     $_SESSION['users'] = [];
 }
 
-// Handle status update
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $id = $_POST['student_id'];
     $status = $_POST['status'];
@@ -22,7 +21,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     exit();
 }
 
-// Categorize students
 $students_list = [];
 $present_list = [];
 $absent_list = [];
@@ -51,7 +49,6 @@ function renderCard($student, $status = 'students') {
                     <h5 class="card-title">' . htmlspecialchars($student['firstname']) . ' ' . htmlspecialchars($student['lastname']) . '</h5>
                     <p class="card-text"> ' . (isset($student['studentno']) ? $student['studentno'] : '-') . '</p>';
 
-    // Dropdown actions depending on current row
     echo '<div class="dropdown d-flex justify-content-end mt-2">
         <button class="btn btn-' . $btnClass . ' dropdown-toggle" type="button" data-bs-toggle="dropdown">Action</button>
         <ul class="dropdown-menu dropdown-menu-end">';
@@ -98,7 +95,7 @@ function renderCard($student, $status = 'students') {
     }
 
     echo '  </ul>
-            </div>'; // dropdown end
+            </div>'; 
 
     echo '  </div>
             </div>
@@ -150,7 +147,7 @@ function renderCard($student, $status = 'students') {
         </div>
     </nav>
 
-    <div class="container p-2 shadow" style="margin-top: 48;">
+    <div class="container p-3 shadow" style="margin-top: 40;">
         <h2 class="text-primary">Students <span class="badge text-bg-primary"><?= count($students_list) ?></span></h2>
         <div class="row">
             <?php foreach ($students_list as $student) renderCard($student, 'students'); ?>

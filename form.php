@@ -4,8 +4,8 @@ session_start();
 $lastname = "";
 $firstname = "";
 $middlename = "";
-$gender = "Male"; // ✅ default to Male
-$civilstatus = "Single"; // ✅ default to Single
+$gender = "Male"; 
+$civilstatus = "Single"; 
 $dateofbirth = "";
 $placeofbirth = "";
 $nationality = "";
@@ -40,8 +40,8 @@ if (isset($_POST['btnSubmit'])) {
     $province = trim($_POST['province']);
     
     if (empty($error_messages)) {
-        // Generate Student Number
-        $prefix = "STUD20250"; // fixed prefix
+        
+        $prefix = "STUD20250"; 
         $count = count($_SESSION['users']) + 1;
         $studentno = $prefix . $count;
 

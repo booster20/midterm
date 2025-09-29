@@ -1,21 +1,21 @@
 <?php
 session_start();
 
-// Initialize session array if not exists
+
 if (!isset($_SESSION['users'])) {
     $_SESSION['users'] = [];
 }
 
-// Handle deletion
+
 if (isset($_POST['btnDelete'])) {
     unset($_SESSION['users'][$_POST['btnDelete']]);
-    // Re-index array so keys remain sequential
+   
     $_SESSION['users'] = array_values($_SESSION['users']);
     header("Location: students.php");
     exit();
 }
 
-// ✅ Count present and absent based on attendance_status
+
 $totalPresent = 0;
 $totalAbsent = 0;
 
@@ -85,7 +85,7 @@ foreach ($_SESSION['users'] as $student) {
               <a href="form.php" class="btn btn-outline-light">Add Student</a>
             </div>
           </div>
-          <!-- ✅ Updated counts -->
+    
           <div class="card bg-success m-3" style="width: 25rem;">
             <div class="card-body text-white">
               <h5 class="card-title"><?= $totalPresent ?></h5>
@@ -172,7 +172,6 @@ foreach ($_SESSION['users'] as $student) {
         </div>
       </div>
 
-      <!-- ✅ Carousel and Departments Section -->
       <hr class="my-4">
       <h1 style="text-align: center;">Departments</h1>
       <div id="carouselExampleCaptions" class="carousel slide">
@@ -316,7 +315,7 @@ foreach ($_SESSION['users'] as $student) {
         </div>
       </div>
 
-    </div> <!-- container -->
-  </div> <!-- shadow -->
+    </div> 
+  </div> 
 </body>
 </html>
